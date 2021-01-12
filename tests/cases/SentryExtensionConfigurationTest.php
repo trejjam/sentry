@@ -2,9 +2,9 @@
 
 namespace Tests\Cases;
 
-use Trejjam\Sentry\DI\SentryExtensionConfiguration;
 use Tester\Assert;
 use Tester\TestCase;
+use Trejjam\Sentry\DI\SentryExtensionConfiguration;
 
 require __DIR__ . '/../bootstrap.php';
 
@@ -14,7 +14,7 @@ class SentryExtensionConfigurationTest extends TestCase
 	public function testFoo(): void
 	{
 		$sentryExtensionConfiguration = new SentryExtensionConfiguration();
-		$sentryExtensionConfiguration->dsn = "dsn";
+		$sentryExtensionConfiguration->dsn = 'dsn';
 		Assert::same('dsn', $sentryExtensionConfiguration->dsn);
 	}
 

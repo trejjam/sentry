@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace Trejjam\Sentry\Logger;
 
@@ -11,49 +10,52 @@ use Throwable;
 
 final class SentryLogger implements ILogger
 {
-    private HubInterface $hub;
 
-    public function __construct(HubInterface $hub)
-    {
-        $this->hub = $hub;
-    }
+	private HubInterface $hub;
 
-    public function log($message, string $priority = ILogger::INFO) : void
-    {
-        $severity = $this->getSeverityFromPriority($priority);
+	public function __construct(HubInterface $hub)
+	{
+		$this->hub = $hub;
+	}
 
-        if ($severity === null) {
-            return;
-        }
+	public function log($message, string $priority = ILogger::INFO): void
+	{
+		$severity = $this->getSeverityFromPriority($priority);
 
-        $event = Event::createEvent();
+		if ($severity === null) {
+			return;
+		}
 
-        $event->setLevel($severity);
+		$event = Event::createEvent();
 
-        if ($message instanceof Throwable) {
-            $this->hub->captureException($message);
-            return;
-        }
-        $event->setMessage($message);
+		$event->setLevel($severity);
 
-        $this->hub->captureEvent($event);
-    }
+		if ($message instanceof Throwable) {
+			$this->hub->captureException($message);
+			return;
+		}
 
-    private function getSeverityFromPriority(string $priority) : ?Severity
-    {
-        switch ($priority) {
-            case ILogger::WARNING:
-                return Severity::warning();
+		$event->setMessage($message);
 
-            case ILogger::ERROR:
-                return Severity::error();
+		$this->hub->captureEvent($event);
+	}
 
-            case ILogger::EXCEPTION:
-            case ILogger::CRITICAL:
-                return Severity::fatal();
+	private function getSeverityFromPriority(string $priority): ?Severity
+	{
+		switch ($priority) {
+			case ILogger::WARNING:
+				return Severity::warning();
 
-            default:
-                return null;
-        }
-    }
+			case ILogger::ERROR:
+				return Severity::error();
+
+			case ILogger::EXCEPTION:
+			case ILogger::CRITICAL:
+				return Severity::fatal();
+
+			default:
+				return null;
+		}
+	}
+
 }
