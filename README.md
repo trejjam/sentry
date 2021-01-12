@@ -1,14 +1,14 @@
 ![](https://heatbadger.now.sh/github/readme/contributte/bare/)
 
 <p align=center>
-  <a href="https://github.com/contributte/bare/actions"><img src="https://badgen.net/github/checks/contributte/bare/master?cache=300"></a>
-  <a href="https://coveralls.io/r/contributte/bare"><img src="https://badgen.net/coveralls/c/github/contributte/bare?cache=300"></a>
-  <a href="https://packagist.org/packages/contributte/bare"><img src="https://badgen.net/packagist/dm/contributte/bare"></a>
-  <a href="https://packagist.org/packages/contributte/bare"><img src="https://badgen.net/packagist/v/contributte/bare"></a>
+  <a href="https://github.com/trejjam/sentry/actions"><img src="https://badgen.net/github/checks/trejjam/sentry/master?cache=300"></a>
+  <a href="https://coveralls.io/r/trejjam/sentry"><img src="https://badgen.net/coveralls/c/github/trejjam/sentry?cache=300"></a>
+  <a href="https://packagist.org/packages/trejjam/sentry"><img src="https://badgen.net/packagist/dm/trejjam/sentry"></a>
+  <a href="https://packagist.org/packages/trejjam/sentry"><img src="https://badgen.net/packagist/v/trejjam/sentry"></a>
 </p>
 <p align=center>
-  <a href="https://packagist.org/packages/contributte/bare"><img src="https://badgen.net/packagist/php/contributte/bare"></a>
-  <a href="https://github.com/contributte/bare"><img src="https://badgen.net/github/license/contributte/bare"></a>
+  <a href="https://packagist.org/packages/trejjam/sentry"><img src="https://badgen.net/packagist/php/trejjam/sentry"></a>
+  <a href="https://github.com/trejjam/sentry"><img src="https://badgen.net/github/license/trejjam/sentry"></a>
   <a href="https://bit.ly/ctteg"><img src="https://badgen.net/badge/support/gitter/cyan"></a>
   <a href="https://bit.ly/cttfo"><img src="https://badgen.net/badge/support/forum/yellow"></a>
   <a href="https://contributte.org/partners.html"><img src="https://badgen.net/badge/sponsor/donations/F96854"></a>
@@ -20,10 +20,10 @@ Website ðŸš€ <a href="https://contributte.org">contributte.org</a> | Contact ðŸ‘
 
 ## Usage
 
-To install the latest version of `contributte/bare` use [Composer](https://getcomposer.com).
+To install the latest version of `trejjam/sentry` use [Composer](https://getcomposer.com).
 
 ```
-composer require contributte/bare
+composer require trejjam/sentry
 ```
 
 ## Documentation

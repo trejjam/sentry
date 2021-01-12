@@ -1,34 +1,41 @@
 {
-  "name": "contributte/bare",
-  "description": "This is an empty library skeleton to speed up new package development.",
+  "name": "trejjam/sentry",
+  "description": "Sentry integration into Nette framework",
   "keywords": [
     "nette",
     "contributte",
+    "sentry",
     "php"
   ],
   "type": "library",
   "license": "MIT",
-  "homepage": "https://github.com/contributte/bare",
+  "homepage": "https://github.com/trejjam/sentry",
   "authors": [
     {
-      "name": "Milan Felix Šulc",
-      "homepage": "https://f3l1x.io"
+      "name": "Jan Trejbal",
+      "homepage": "https://github.com/trejjam"
     }
   ],
   "require": {
-    "php": ">=7.4"
+    "php": "^7.4 | ^8.0",
+    "nette/di": "^2.4 | ^3.1",
+    "sentry/sentry": "^3.1"
   },
   "require-dev": {
     "ninjify/nunjuck": "^0.4",
     "ninjify/qa": "^0.12",
     "phpstan/phpstan": "^0.12",
+    "phpstan/extension-installer": "^1.1",
     "phpstan/phpstan-deprecation-rules": "^0.12",
     "phpstan/phpstan-nette": "^0.12",
     "phpstan/phpstan-strict-rules": "^0.12"
   },
+  "suggest": {
+    "contributte/logging": "To use SentryLogger"
+  },
   "autoload": {
     "psr-4": {
-      "Contributte\\Bare\\": "src"
+      "Trejjam\\Sentry\\": "src"
     }
   },
   "autoload-dev": {

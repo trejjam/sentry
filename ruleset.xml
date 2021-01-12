@@ -7,7 +7,7 @@
 	<rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
 		<properties>
 			<property name="rootNamespaces" type="array" value="
-				src=>Contributte\Bare,
+				src=>Trejjam\Sentry,
 				tests/cases=>Tests\Cases,
 				tests/fixtures=>Tests\Fixtures,
 			"/>
