@@ -35,7 +35,7 @@ final class SentryLogger implements ILogger
 			return;
 		}
 
-		$event->setMessage($message);
+		$event->setMessage((string) $message);
 
 		$this->hub->captureEvent($event);
 	}
