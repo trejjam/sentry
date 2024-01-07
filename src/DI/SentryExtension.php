@@ -14,8 +14,10 @@ use Sentry\State\Hub;
 final class SentryExtension extends CompilerExtension
 {
 
+	// phpcs:disable SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingNativeTypeHint
 	/** @var SentryExtensionConfiguration */
 	protected $config;
+	// phpcs:enable SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingNativeTypeHint
 
 	public function __construct()
 	{
