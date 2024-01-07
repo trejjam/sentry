@@ -18,7 +18,7 @@ final class SentryLogger implements ILogger
 		$this->hub = $hub;
 	}
 
-	public function log($message, string $priority = ILogger::INFO): void
+	public function log(mixed $message, string $priority = ILogger::INFO): void
 	{
 		$severity = $this->getSeverityFromPriority($priority);
 
@@ -32,6 +32,7 @@ final class SentryLogger implements ILogger
 
 		if ($message instanceof Throwable) {
 			$this->hub->captureException($message);
+
 			return;
 		}
 
@@ -45,14 +46,11 @@ final class SentryLogger implements ILogger
 		switch ($priority) {
 			case ILogger::WARNING:
 				return Severity::warning();
-
 			case ILogger::ERROR:
 				return Severity::error();
-
 			case ILogger::EXCEPTION:
 			case ILogger::CRITICAL:
 				return Severity::fatal();
-
 			default:
 				return null;
 		}
