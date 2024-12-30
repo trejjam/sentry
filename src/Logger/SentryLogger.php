@@ -10,6 +10,7 @@ use Throwable;
 
 final readonly class SentryLogger implements ILogger
 {
+
 	public function __construct(
 		private HubInterface $hub,
 		private bool $disabled
