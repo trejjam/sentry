@@ -58,7 +58,7 @@ final class SentryExtension extends CompilerExtension
 			->setFactory(SentrySdk::class . '::setCurrentHub')
 			->setAutowired(false);
 
-		if (class_exists(ILogger::class, false)) {
+		if (interface_exists(ILogger::class, false)) {
 			$builder->addDefinition($this->prefix('sentryLogger'))
 				->setFactory(SentryLogger::class, [
 					'disabled' => $this->config->disabled,
