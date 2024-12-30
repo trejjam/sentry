@@ -32,7 +32,7 @@ final class SentryExtension extends CompilerExtension
 		return Expect::from($this->config);
 	}
 
-	public function beforeCompile(): void
+	public function loadConfiguration(): void
 	{
 		$builder = $this->getContainerBuilder();
 
@@ -40,10 +40,10 @@ final class SentryExtension extends CompilerExtension
 			->setFactory(
 				ClientBuilder::class . '::create',
 				[
-						[
-							'dsn' => $this->config->dsn,
-						],
-					]
+					[
+						'dsn' => $this->config->dsn,
+					],
+				]
 			);
 
 		$builder->addDefinition($this->prefix('client'))
@@ -58,8 +58,9 @@ final class SentryExtension extends CompilerExtension
 			->setFactory(SentrySdk::class . '::setCurrentHub')
 			->setAutowired(false);
 
-		if (interface_exists(ILogger::class, false)) {
+		if (interface_exists(ILogger::class)) {
 			$builder->addDefinition($this->prefix('sentryLogger'))
+				->setType(ILogger::class)
 				->setFactory(SentryLogger::class, [
 					'disabled' => $this->config->disabled,
 				])
