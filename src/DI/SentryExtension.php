@@ -70,6 +70,10 @@ final class SentryExtension extends CompilerExtension
 
 	public function afterCompile(ClassType $class): void
 	{
+		if ($this->config->disabled) {
+			return;
+		}
+
 		$initialize = $class->getMethod('initialize');
 
 		$initialize->addBody('$this->getService(?);', [$this->prefix('sentrySdk')]);
