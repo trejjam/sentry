@@ -7,6 +7,6 @@ class SentryExtensionConfiguration
 
 	public string $dsn;
 
-	public string $disabled;
+	public bool $disabled;
 
 }
