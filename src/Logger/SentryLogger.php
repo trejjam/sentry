@@ -8,18 +8,21 @@ use Sentry\Severity;
 use Sentry\State\HubInterface;
 use Throwable;
 
-final class SentryLogger implements ILogger
+final readonly class SentryLogger implements ILogger
 {
-
-	private HubInterface $hub;
-
-	public function __construct(HubInterface $hub)
+	public function __construct(
+		private HubInterface $hub,
+		private bool $disabled
+	)
 	{
-		$this->hub = $hub;
 	}
 
 	public function log(mixed $message, string $priority = ILogger::INFO): void
 	{
+		if ($this->disabled) {
+			return;
+		}
+
 		$severity = $this->getSeverityFromPriority($priority);
 
 		if ($severity === null) {

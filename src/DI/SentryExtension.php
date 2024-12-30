@@ -2,6 +2,7 @@
 
 namespace Trejjam\Sentry\DI;
 
+use Contributte\Logging\ILogger;
 use Nette\DI\CompilerExtension;
 use Nette\PhpGenerator\ClassType;
 use Nette\Schema\Expect;
@@ -10,6 +11,8 @@ use Sentry\ClientBuilder;
 use Sentry\ClientInterface;
 use Sentry\SentrySdk;
 use Sentry\State\Hub;
+use Sentry\State\HubInterface;
+use Trejjam\Sentry\Logger\SentryLogger;
 
 final class SentryExtension extends CompilerExtension
 {
@@ -48,11 +51,20 @@ final class SentryExtension extends CompilerExtension
 			->setFactory($this->prefix('@clientBuilder') . '::getClient');
 
 		$builder->addDefinition($this->prefix('sentryHub'))
+			->setType(HubInterface::class)
 			->setFactory(Hub::class);
 
 		$builder->addDefinition($this->prefix('sentrySdk'))
 			->setFactory(SentrySdk::class . '::setCurrentHub')
 			->setAutowired(false);
+
+		if (class_exists(ILogger::class, false)) {
+			$builder->addDefinition($this->prefix('sentryLogger'))
+				->setFactory(SentryLogger::class, [
+					'disabled' => $this->config->disabled,
+				])
+				->setAutowired(false);
+		}
 	}
 
 	public function afterCompile(ClassType $class): void
