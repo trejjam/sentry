@@ -29,7 +29,12 @@ final class SentryExtension extends CompilerExtension
 
 	public function getConfigSchema(): Schema
 	{
-		return Expect::from($this->config);
+		return Expect::from(
+			$this->config,
+			[
+				'disabled' => Expect::bool()->required(false)->default(false),
+			]
+		);
 	}
 
 	public function loadConfiguration(): void
